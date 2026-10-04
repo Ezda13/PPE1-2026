@@ -1,0 +1,23 @@
+# Exercice 1.a : nombre d'annotations par année
+echo "Annotations en 2016 :" > comptes.txt
+cat ~/Bureau/PPE1/donnees/2016*.ann | wc -l >> comptes.txt
+echo "Annotations en 2017 :" >> comptes.txt
+cat ~/Bureau/PPE1/donnees/2017*.ann | wc -l >> comptes.txt
+echo "Annotations en 2018 :" >> comptes.txt
+cat ~/Bureau/PPE1/donnees/2018*.ann | wc -l >> comptes.txt
+
+# Exercice 1.b : nombre de lieux par année
+echo "Annotations en 2016 :" > locations.txt
+cat ~/Bureau/PPE1/donnees/2016*.ann | grep Location | wc -l >> locations.txt
+echo "Annotations en 2017 :" >> locations.txt
+cat ~/Bureau/PPE1/donnees/2017*.ann | grep Location | wc -l >> locations.txt
+echo "Annotations en 2018 :" >> locations.txt
+cat ~/Bureau/PPE1/donnees/2018*.ann | grep Location | wc -l >> locations.txt
+
+# Exercice 2.a : les 15 lieux les plus cités par année
+cat ~/Bureau/PPE1/donnees/2016*.ann | grep Location | cut -f3 | sort | uniq -c | sort -n | tail -15 > classement_2016.txt
+cat ~/Bureau/PPE1/donnees/2017*.ann | grep Location | cut -f3 | sort | uniq -c | sort -n | tail -15 > classement_2017.txt
+cat ~/Bureau/PPE1/donnees/2018*.ann | grep Location | cut -f3 | sort | uniq -c | sort -n | tail -15 > classement_2018.txt
+
+# Exercice 2.b : les 15 lieux les plus cités pour un mois, toutes années confondues
+cat ~/Bureau/PPE1/donnees/????_MM_*.ann | grep Location | cut -f3 | sort | uniq -c | sort -n | tail -15 > classement_MOIS.txt
